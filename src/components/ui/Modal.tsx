@@ -32,6 +32,8 @@ export default function Modal({ open, onClose, title, description, children, siz
  const descriptionId = useId();
  useDialogFocus(open, dialogRef, onClose, dismissible);
 
+ if (typeof document === 'undefined' || !document.body) return null;
+
  return createPortal(
   <AnimatePresence>
    {open && (

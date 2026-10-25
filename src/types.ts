@@ -757,7 +757,7 @@ export type UserProfile = User & {
 };
 
 // ============================================================================
-// EXTENDED COFOUNDERBAY 6-AXIS MATCHING, DEAL ROOM & GITHUB SYNC TYPES
+// EXTENDED COFOUNDERBAY 6-AXIS MATCHING & DEAL ROOM TYPES
 // ============================================================================
 
 export type RoleCategory =

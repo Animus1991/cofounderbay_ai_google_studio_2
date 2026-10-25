@@ -617,20 +617,20 @@ export const GlobalStudioModals: React.FC = () => {
 
       {/* 5. Need Cards Wall Modal */}
       {needWallModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md">
-          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#030712] text-slate-100 border border-slate-800 shadow-2xl p-4 sm:p-6">
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md">
+          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-2xl bg-card text-foreground border border-border shadow-2xl p-4 sm:p-6">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-border">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                <div className="w-9 h-9 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary">
                   <Layers className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold text-white">
+                  <h2 className="text-base font-bold text-foreground">
                     {lang === 'el'
                       ? 'Πίνακας Αναγκών & Ρόλων Startup (Need Cards Wall)'
                       : 'Startup Role Needs & Co-Founder Bounties (Need Cards Wall)'}
                   </h2>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-muted-foreground">
                     {lang === 'el'
                       ? 'Συγχρονισμένο σε πραγματικό χρόνο με το AI Co-Pilot (/need) και το Network'
                       : 'Synchronized in real time with AI Co-Pilot (/need) and Network'}
@@ -640,7 +640,7 @@ export const GlobalStudioModals: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setNeedWallModalOpen(false)}
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

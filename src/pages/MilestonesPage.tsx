@@ -53,7 +53,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 const STATUS_CONFIG: Record<string, { color: string; bg: string; dot: string }> = {
  Completed: { color: 'text-emerald-600', bg: 'bg-emerald-50', dot: 'bg-emerald-500' },
  'In Progress': { color: 'text-blue-600', bg: 'bg-blue-50', dot: 'bg-blue-500' },
- Planned: { color: 'text-stone-500', bg: 'bg-stone-50', dot: 'bg-stone-300' },
+ Planned: { color: 'text-stone-500', bg: 'bg-stone-50', dot: 'bg-stone-500' },
  Delayed: { color: 'text-amber-600', bg: 'bg-amber-50', dot: 'bg-amber-500' },
  Overdue: { color: 'text-red-600', bg: 'bg-red-50', dot: 'bg-red-500' },
 };

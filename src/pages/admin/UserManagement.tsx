@@ -25,7 +25,7 @@ import {
  ChevronRight
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 import Avatar from "../../components/ui/Avatar";

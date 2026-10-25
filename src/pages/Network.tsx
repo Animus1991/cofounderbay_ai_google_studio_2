@@ -12,7 +12,7 @@ import {
   ChevronRight,
   X,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   closeNeed,
@@ -135,11 +135,13 @@ export default function Network({ user }: NetworkProps) {
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const real = !isDemoMode;
-  const activeTab: NetworkTab = isTab(params.get('tab')) ? params.get('tab') as NetworkTab : 'connections';
+  const rawTab = params.get('tab');
+  const activeTab: NetworkTab = isTab(rawTab) ? rawTab : 'connections';
   const setActiveTab = (id: string) => {
     const next = new URLSearchParams(params);
     if (id === 'connections') next.delete('tab');
     else next.set('tab', id);
+    next.delete('status');
     setParams(next, { replace: true });
   };
   const saved = useStored(readSaved, [keys.saved]);
@@ -147,7 +149,13 @@ export default function Network({ user }: NetworkProps) {
   const needs = useStored(readNeeds, [keys.needs]);
   const connections = useConnections();
   const [networkQuery, setNetworkQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'All' | ConnectionStatus>('All');
+  const initialStatus = (): 'All' | ConnectionStatus => {
+    const s = params.get('status');
+    if (s === 'Connected' || s === 'Pending' || s === 'Incoming') return s;
+    if (rawTab === 'Requests') return connections.incoming.length > 0 ? 'Incoming' : 'Pending';
+    return 'All';
+  };
+  const [statusFilter, setStatusFilter] = useState<'All' | ConnectionStatus>(initialStatus);
   const [pendingDisconnect, setPendingDisconnect] = useState<NetworkConnection | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [compared, setCompared] = useState(false);

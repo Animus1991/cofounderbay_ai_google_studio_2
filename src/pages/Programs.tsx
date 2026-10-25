@@ -21,7 +21,7 @@ import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import { cn } from "../lib/utils";
 import { User } from "../types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useT } from "../lib/language";
 import { labelOf } from "../lib/labels";
 import { formatDate } from "../lib/dates";

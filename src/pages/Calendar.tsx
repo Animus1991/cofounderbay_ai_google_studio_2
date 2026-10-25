@@ -13,7 +13,7 @@ import { cn } from "../lib/utils";
 import { keys, readSessions, readValue, removeSession, writeValue } from "../lib/localLists";
 import { usePageControls } from "../lib/pageControls";
 import { useStored } from "../lib/useStored";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useT } from "../lib/language";
 import { useAuth } from "../App";
 import { labelOf } from "../lib/labels";

@@ -687,7 +687,7 @@ export default function Discovery({ user }: DiscoveryProps) {
          </div>
          {viewMode === "list" && (
           <div className="px-12 pb-8 md:pb-0 md:pr-12">
-           <Button type="button" variant="outline" className="rounded-full h-11 px-8 text-sm font-medium tracking-wider border-stone-200 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all" onClick={(e: React.MouseEvent) => { e.stopPropagation(); ask(`Tell me about ${opp.title}`); }}>
+           <Button type="button" variant="outline" className="rounded-full h-11 px-8 text-sm font-medium tracking-wider border-stone-200 hover:bg-stone-900 hover:text-white hover:border-stone-900 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all" onClick={(e: React.MouseEvent) => { e.stopPropagation(); ask(`Tell me about ${opp.title}`); }}>
              {t('Details', 'Λεπτομέρειες')}
             </Button>
           </div>
@@ -754,7 +754,7 @@ export default function Discovery({ user }: DiscoveryProps) {
      </section>
      )}
 
-     {(activeCategory === 'All' || activeCategory === 'Events') && (
+     {activeCategory === 'Events' && (
       <section className="space-y-4">
        <div className="flex items-center justify-between">
         <div>

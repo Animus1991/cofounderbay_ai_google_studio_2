@@ -33,7 +33,7 @@ import {
   Tags,
   Sparkles
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { User, UserRole } from "../../types";
 import { cn } from "../../lib/utils";
@@ -299,11 +299,11 @@ export default function Sidebar({
             </NavLink>
           </div>
 
-          {/* Studio Upgrades & 1-Click GitHub Sync Section */}
+          {/* Studio Tools Section */}
           <div className="space-y-1.5">
             {!collapsed ? (
               <p className="px-3 text-xs font-semibold text-stone-400 tracking-[0.12em] mb-2">
-                {t("Studio & GitHub Sync", "Εργαλεία Studio & GitHub")}
+                {t("Studio Tools", "Εργαλεία Studio")}
               </p>
             ) : (
               <div className="h-px bg-stone-100 mx-3 mb-3" />
@@ -316,10 +316,7 @@ export default function Sidebar({
                   onClick={tool.onClick}
                   title={t(tool.labelEn, tool.labelEl)}
                   className={cn(
-                    "w-full flex items-center justify-between gap-3 px-3 py-2 min-h-11 rounded-lg text-sm font-medium transition-all duration-200 group text-left",
-                    tool.id === 'github-sync'
-                      ? "bg-stone-100/90 text-stone-900 hover:bg-stone-200/70"
-                      : "text-stone-600 hover:bg-stone-50/80 hover:text-stone-900",
+                    "w-full flex items-center justify-between gap-3 px-3 py-2 min-h-11 rounded-lg text-sm font-medium transition-all duration-200 group text-left text-stone-600 hover:bg-stone-50/80 hover:text-stone-900",
                     collapsed && "justify-center px-0"
                   )}
                 >

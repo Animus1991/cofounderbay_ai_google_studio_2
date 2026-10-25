@@ -790,7 +790,7 @@ export default function FounderTools({ user }: FounderToolsProps) {
            <Check className="w-2.5 h-2.5 text-white" />
           </div>
          ) : step.status === "In-Progress" ? (
-          <div className="w-4 h-4 rounded-full bg-amber-400 flex items-center justify-center shrink-0">
+          <div className="w-4 h-4 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
            <div className="w-1.5 h-1.5 rounded-full bg-white" />
           </div>
          ) : null}
@@ -919,9 +919,9 @@ export default function FounderTools({ user }: FounderToolsProps) {
          </div>
          <div className={cn(
           "w-4 h-4 rounded-full flex items-center justify-center shrink-0",
-          slide.status === "complete" ? "bg-emerald-500" : slide.status === "in-progress" ? "bg-amber-400" : "bg-stone-200"
+          slide.status === "complete" ? "bg-emerald-500" : slide.status === "in-progress" ? "bg-orange-500" : "bg-stone-200"
          )}>
-          {slide.status === "complete" ? <Check className="w-2.5 h-2.5 text-white" /> : slide.status === "in-progress" ? <div className="w-1 h-1 rounded-full bg-white" /> : null}
+          {slide.status === "complete" ? <Check className="w-2.5 h-2.5 text-white" /> : slide.status === "in-progress" ? <div className="w-1.5 h-1.5 rounded-full bg-white" /> : null}
          </div>
         </button>
        ))}

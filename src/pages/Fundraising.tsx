@@ -896,7 +896,7 @@ export default function Fundraising({ user }: FundraisingProps) {
             {barData.map((h, i) => (
              <div
               key={i}
-              className="flex-1 bg-stone-100 rounded-t hover:bg-stone-800 transition-all cursor-pointer relative"
+              className="flex-1 bg-stone-300 rounded-t hover:bg-stone-900 transition-all cursor-pointer relative"
               style={{ height: `${(h / barMax) * 100}%` }}
              >
               {/* Tooltip on hover */}

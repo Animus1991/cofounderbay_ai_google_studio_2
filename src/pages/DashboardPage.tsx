@@ -462,8 +462,8 @@ export default function DashboardPage() {
   const chartSeries = rawSeries?.map((point) => ({ ...point, name: localizeAxisLabel(point.name, mode) })) ?? null;
   const communities = isDemoMode ? ACTIVE_COMMUNITIES : (live.communities ?? []);
   const prospect = isDemoMode
-    ? rankedCircles[0] ?? null
-    : (rankedCircles[0] ?? live.prospect);
+    ? (rankedCircles[1] ?? rankedCircles[0] ?? null)
+    : (rankedCircles[1] ?? rankedCircles[0] ?? live.prospect);
   const streakDays = isDemoMode ? (streak?.currentStreak ?? 12) : (streak?.currentStreak ?? 0);
   const profileViews = isDemoMode ? demoWeeklyViews() : (viewCount ?? live.profileViews);
   const matchScore = isDemoMode ? rankedCircles[0]?.match : (rankedCircles[0]?.match ?? live.topMatchScore);
@@ -794,11 +794,11 @@ export default function DashboardPage() {
               hint: bothText('Shared skills and industry with the top match', 'Κοινές δεξιότητες και κλάδος με την πρώτη αντιστοίχιση'),
             },
             {
-              label: t('Streak', 'Σερί'),
-              value: `${streakDays}d`,
+              label: t('Requests', 'Αιτήματα'),
+              value: String(pendingRequests),
               sub: null,
-              href: '/milestones',
-              hint: bothText('Days in a row the work kept going', 'Μέρες στη σειρά που η δουλειά συνεχίστηκε'),
+              href: '/network?tab=Requests',
+              hint: bothText('Pending connection requests waiting for your response', 'Εκκρεμή αιτήματα σύνδεσης που περιμένουν απάντηση'),
             },
             {
               label: t('Messages', 'Μηνύματα'),
