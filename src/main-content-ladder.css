@@ -1,0 +1,401 @@
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Widths chosen for a page column overflow a rail. Cap them rather than let
+   the panel scroll sideways. */
+[data-rail-content] .max-w-md,
+[data-rail-content] .max-w-lg,
+[data-rail-content] .max-w-xl,
+[data-rail-content] .max-w-2xl {
+  max-width: 100%;
+}
+
+/* Page cards keep 24–28px padding. In the 262–315px rail that leaves too
+   little for copy, so Greek labels (streak, recent activity) walk off the
+   card. Tighten padding only inside the rail. */
+[data-rail-content] .card-comfortable {
+  padding: 14px;
+}
+[data-rail-content] .card-comfortable.card-header {
+  padding-bottom: 10px;
+}
+[data-rail-content] .card-comfortable ~ .card-comfortable {
+  padding-top: 0;
+}
+
+/* ── App chrome type (1.08 from the caption floor) ───────────────────────
+   Claude `b05b51b8` last push is 22.12 / 21.13 / 19.21 / 12.35 (phone
+   labels 10.24). Tight title≈section is good; the set is too large and
+   the 12.35→22.12 span is 9.77px. No smaller system exists on that
+   branch, so chrome is a geometric 1.08 from the same 12.2412px floor
+   as `aside .text-2xs` (between a minor and a major second):
+
+     n=0 label   = 12.2412px          (floor)
+     n=2 compact = 12.2412 × 1.08²    → 14.28px = ladder sm / rail
+     n=3 figure  = 12.2412 × 1.08³    → 15.42px
+     n=4 section = 12.2412 × 1.08⁴    → 16.65px
+     n=5 title   = ladder lg          → 18px   (1.08⁵ ≈ 17.99)
+
+   Adjacent chrome steps stay ~1.08. Title→section ≈ 1.35px.
+   Title→label span = 5.76px (Claude 9.77). Same px every breakpoint —
+   Claude phone inverted section above title. Roles stay; `.text-*` does
+   not change. Element+class so these beat later `sm:text-*`. */
+h1.page-title,
+h1.founder-dash-h1,
+p.page-stat,
+h3.page-stat,
+span.page-stat,
+div.page-stat,
+dd.page-stat,
+p.founder-dash-stat {
+  font-size: max(12.2412px, 1.047816rem);
+  line-height: 1.60875rem;
+}
+p.page-stat-label,
+p.page-stat-meta,
+span.page-stat-label,
+div.page-stat-label,
+div.page-stat-meta,
+p.founder-dash-stat-label,
+p.founder-dash-stat-meta {
+  font-size: max(12.2412px, 0.765075rem);
+  line-height: max(16.3216px, 1rem);
+}
+h3.page-section,
+h3.founder-dash-section {
+  font-size: max(12.2412px, 0.98924864rem);
+  line-height: 1.485rem;
+}
+/* Glyph in the title row = 1.08 × that title, not a fixed 16px next to 16.65. */
+h3.page-section > svg,
+h3.page-section svg.icon-sm,
+h3.page-section svg.lucide,
+h3.founder-dash-section > svg,
+h3.founder-dash-section svg.icon-sm,
+h3.founder-dash-section svg.lucide {
+  height: 1.08em;
+  width: 1.08em;
+}
+p.page-figure,
+p.founder-dash-figure {
+  font-size: max(12.2412px, 0.91597096rem);
+  line-height: 1.423125rem;
+}
+@media (min-width: 640px) {
+  h1.page-title,
+  h1.founder-dash-h1,
+  p.page-stat,
+  h3.page-stat,
+  span.page-stat,
+  div.page-stat,
+  dd.page-stat,
+  p.founder-dash-stat {
+    font-size: max(12.2412px, 1.047816rem);
+    line-height: 1.60875rem;
+  }
+  p.page-stat-label,
+  p.page-stat-meta,
+  span.page-stat-label,
+  div.page-stat-label,
+  div.page-stat-meta,
+  p.founder-dash-stat-label,
+  p.founder-dash-stat-meta {
+    font-size: max(12.2412px, 0.765075rem);
+    line-height: max(16.3216px, 1rem);
+  }
+  h3.page-section,
+  h3.founder-dash-section {
+    font-size: max(12.2412px, 0.98924864rem);
+    line-height: 1.485rem;
+  }
+}
+@media (min-width: 1024px) {
+  h1.page-title,
+  h1.founder-dash-h1,
+  p.page-stat,
+  h3.page-stat,
+  span.page-stat,
+  div.page-stat,
+  dd.page-stat,
+  p.founder-dash-stat {
+    font-size: max(12.2412px, 1.27782440rem);
+    line-height: 1.96189025rem;
+  }
+  p.page-stat-label,
+  p.page-stat-meta,
+  span.page-stat-label,
+  div.page-stat-label,
+  div.page-stat-meta,
+  p.founder-dash-stat-label,
+  p.founder-dash-stat-meta {
+    font-size: max(12.2412px, 0.765075rem);
+    line-height: max(16.3216px, 1.24402439rem);
+  }
+  h3.page-section,
+  h3.founder-dash-section {
+    font-size: max(12.2412px, 1.20640078rem);
+    line-height: 1.81097561rem;
+  }
+  p.page-figure,
+  p.founder-dash-figure {
+    font-size: max(12.2412px, 1.11703776rem);
+    line-height: 1.73551823rem;
+  }
+}
+
+/* Dense cards + the ~240px rail stay on ladder `sm`. Do not key this off
+   leftover `text-sm` on canvas titles — that split 14.28 vs 18 on the
+   same page. */
+h3.page-section.page-section--compact,
+[data-rail-content] h3.page-section,
+[data-rail-content] h3.founder-dash-section {
+  font-size: 0.86598840rem;
+  line-height: 1.299375rem;
+}
+
+@media (min-width: 640px) {
+  h3.page-section.page-section--compact,
+  [data-rail-content] h3.page-section,
+  [data-rail-content] h3.founder-dash-section {
+    font-size: 0.86598840rem;
+    line-height: 1.299375rem;
+  }
+}
+@media (min-width: 1024px) {
+  h3.page-section.page-section--compact,
+  [data-rail-content] h3.page-section,
+  [data-rail-content] h3.founder-dash-section {
+    font-size: 1.05608341rem;
+    line-height: 1.58460366rem;
+  }
+}
+
+/* Row titles on a wide column step down to the `lg` rung so a list reads
+   as a list, not as page headings. Class-only so the fundraising round
+   name (an h2) and milestone row titles (h3) match alike. */
+@media (min-width: 1024px) {
+  .page-section.page-section--row {
+    font-size: 1.125rem;
+    line-height: 1.6rem;
+  }
+}
+
+/* ── Product type standard ───────────────────────────────────────────────
+   One ladder for every page in the shell and its page-tools rail: the
+   sizes tuned on Overview, Readiness and Analytics. Each step is ~1.08 ×
+   the one below it, and every Tailwind step lands on one of them:
+
+     caption 12.24   2xs, stat labels, the bilingual floor
+     meta    12.87   xs, tabs, small buttons, chips
+     body    13.86   sm, copy, rail card titles
+     figure  14.66   in-card figures ($375K)
+     section 15.83   card and section titles, base, lg
+     title   16.77   h1, stat figures, xl and above (ceiling below)
+
+   The readiness gauge (32px) is the one display figure. Same pixels on
+   phone and desktop. The left SideNav keeps its own chrome ladder.
+   Declared before the ceiling so `text-lg sm:text-xl` still reaches the
+   title step from `sm` up. */
+#main-content .text-2xs {
+  font-size: max(0.765075rem, 12.2412px);
+  line-height: 1rem;
+}
+#main-content .text-xs {
+  font-size: 0.80413208rem;
+  line-height: 1.2375rem;
+}
+#main-content .text-sm {
+  font-size: 0.86598840rem;
+  line-height: 1.299375rem;
+}
+/* Tailwind's base (16.32) and lg (18) sat 0.2px either side of the section
+   and title steps; lg outranked the page title. Both are headings here. */
+#main-content .text-base,
+#main-content .text-lg,
+#main-content p.page-section,
+#main-content h2.page-section {
+  font-size: 0.98924864rem;
+  line-height: 1.485rem;
+}
+/* Responsive variants after the plain steps, so `text-base sm:text-sm`
+   (inputs, selects) still resolves to its sm step. */
+@media (min-width: 640px) {
+  #main-content .sm\:text-xs {
+    font-size: 0.80413208rem;
+    line-height: 1.2375rem;
+  }
+  #main-content .sm\:text-sm {
+    font-size: 0.86598840rem;
+    line-height: 1.299375rem;
+  }
+  #main-content .sm\:text-lg {
+    font-size: 0.98924864rem;
+    line-height: 1.485rem;
+  }
+}
+@media (min-width: 768px) {
+  #main-content .md\:text-lg {
+    font-size: 0.98924864rem;
+    line-height: 1.485rem;
+  }
+}
+/* Tabs switch the copy under them, so they sit a step below it. After
+   `.text-sm`: the trigger carries that class. */
+#main-content [role='tab'] {
+  font-size: 0.80413208rem;
+  line-height: 1.2375rem;
+}
+/* The rail is ~240px wide: every heading step stays on its title size. */
+#main-content [data-rail-content] .text-base,
+#main-content [data-rail-content] .text-lg,
+#main-content [data-rail-content] .sm\:text-lg {
+  font-size: 0.86598840rem;
+  line-height: 1.299375rem;
+}
+
+@media (min-width: 1024px) {
+  #main-content .text-2xs {
+    font-size: max(0.93301829rem, 12.2412px);
+    line-height: max(1.24402439rem, 16.3216px);
+  }
+  #main-content .text-xs {
+    font-size: 0.98064888rem;
+    line-height: 1.50914634rem;
+  }
+  #main-content .text-sm {
+    font-size: 1.05608341rem;
+    line-height: 1.58460366rem;
+  }
+  #main-content .text-base,
+  #main-content .text-lg,
+  #main-content p.page-section,
+  #main-content h2.page-section {
+    font-size: 1.20640078rem;
+    line-height: 1.81097561rem;
+  }
+  #main-content .sm\:text-xs,
+  #main-content .lg\:text-xs {
+    font-size: 0.98064888rem;
+    line-height: 1.50914634rem;
+  }
+  #main-content .sm\:text-sm {
+    font-size: 1.05608341rem;
+    line-height: 1.58460366rem;
+  }
+  #main-content .sm\:text-lg,
+  #main-content .md\:text-lg {
+    font-size: 1.20640078rem;
+    line-height: 1.81097561rem;
+  }
+  #main-content [role='tab'] {
+    font-size: 0.98064888rem;
+    line-height: 1.50914634rem;
+  }
+  #main-content [data-rail-content] .text-base,
+  #main-content [data-rail-content] .text-lg,
+  #main-content [data-rail-content] .sm\:text-lg {
+    font-size: 1.05608341rem;
+    line-height: 1.58460366rem;
+  }
+}
+
+/* ── App type ceiling + floor (all #main-content components) ─────────────
+   The 1.08 chrome cluster tops at lg = 18px. Reusable and page-local
+   leftovers still used xl/2xl/3xl (20/24/26) and text-[11px] (below the
+   12.2412 floor). That is a larger set and a wider span than the
+   preference. Cap those steps inside the shell only — landing, auth
+   marketing and legal stay outside #main-content. The ladder `.text-*`
+   rules are unchanged (typeScaleOrder). Rail stays on sm. Canvas rulers
+   at 9px are not listed. No :is() — Lightning CSS has merged that into
+   invalid selectors here before. */
+#main-content .text-xl,
+#main-content .sm\:text-xl,
+#main-content .md\:text-xl,
+#main-content .lg\:text-xl,
+#main-content .text-2xl,
+#main-content .sm\:text-2xl,
+#main-content .md\:text-2xl,
+#main-content .text-3xl,
+#main-content .sm\:text-3xl,
+#main-content .xl\:text-3xl,
+#main-content .text-4xl,
+#main-content .sm\:text-4xl,
+#main-content .text-5xl,
+#main-content .text-6xl,
+#main-content .text-7xl,
+#main-content .text-\[2\.75rem\] {
+  font-size: max(12.2412px, 1.047816rem);
+  line-height: 1.60875rem;
+}
+#main-content .text-\[11px\],
+#main-content .text-\[10px\],
+#main-content .text-\[11\.76px\],
+#main-content .text-\[12\.74px\] {
+  font-size: 12.2412px;
+  line-height: 1rem;
+}
+#main-content [data-rail-content] .text-xl,
+#main-content [data-rail-content] .sm\:text-xl,
+#main-content [data-rail-content] .text-2xl,
+#main-content [data-rail-content] .sm\:text-2xl,
+#main-content [data-rail-content] .text-3xl {
+  font-size: 0.86598840rem;
+  line-height: 1.299375rem;
+}
+@media (min-width: 1024px) {
+  #main-content .text-xl,
+  #main-content .sm\:text-xl,
+  #main-content .md\:text-xl,
+  #main-content .lg\:text-xl,
+  #main-content .text-2xl,
+  #main-content .sm\:text-2xl,
+  #main-content .md\:text-2xl,
+  #main-content .text-3xl,
+  #main-content .sm\:text-3xl,
+  #main-content .xl\:text-3xl,
+  #main-content .text-4xl,
+  #main-content .sm\:text-4xl,
+  #main-content .text-5xl,
+  #main-content .text-6xl,
+  #main-content .text-7xl,
+  #main-content .text-\[2\.75rem\] {
+    font-size: max(12.2412px, 1.27782440rem);
+    line-height: 1.96189025rem;
+  }
+  #main-content [data-rail-content] .text-xl,
+  #main-content [data-rail-content] .sm\:text-xl,
+  #main-content [data-rail-content] .text-2xl,
+  #main-content [data-rail-content] .sm\:text-2xl,
+  #main-content [data-rail-content] .text-3xl {
+    font-size: 1.05608341rem;
+    line-height: 1.58460366rem;
+  }
+}
+
+/* Chrome roles beat the ceiling (`#main-content .text-xl` is 1,1,0;
+   `#main-content p.page-figure` is 1,1,1). Without this, $375K and
+   leftover `text-xl` on figures snapped to the 18px cap. */
+#main-content h1.page-title,
+#main-content h1.founder-dash-h1,
+#main-content p.page-stat,
+#main-content h3.page-stat,
+#main-content span.page-stat,
+#main-content div.page-stat,
+#main-content dd.page-stat,
+#main-content p.founder-dash-stat {
+  font-size: max(12.2412px, 1.047816rem);
+  line-height: 1.60875rem;
+}
+#main-content p.page-stat-label,
+#main-content p.page-stat-meta,
+#main-content span.page-stat-label,
+#main-content div.page-stat-label,
+#main-content div.page-stat-meta,
+#main-content p.founder-dash-stat-label,
+#main-content p.founder-dash-stat-meta {
+  font-size: max(12.2412px, 0.765075rem);
+  line-height: max(16.3216px, 1rem);
+}
+#main-content h3.page-section,
+#main-content h3.founder-dash-section {
+  font-size: max(12.2412px, 0.98924864rem);
